@@ -676,6 +676,7 @@
         <span class="skill-tag">--csharp</span>
         <span class="skill-tag">--python</span>
         <span class="skill-tag">--javascript</span>
+        <span class="skill-tag">--typescript</span>
         <span class="skill-tag">--html</span>
         <span class="skill-tag">--css</span>
       </div>
@@ -687,6 +688,8 @@
         <span class="skill-tag cyan-tag">--aspnet-core</span>
         <span class="skill-tag cyan-tag">--blazor-server</span>
         <span class="skill-tag cyan-tag">--ef-core</span>
+        <span class="skill-tag cyan-tag">--pixijs-v8</span>
+        <span class="skill-tag cyan-tag">--vite</span>
       </div>
     </div>
     <div class="skill-category reveal reveal-delay-3">
@@ -711,6 +714,7 @@
         <span class="skill-tag">--safety-critical-systems</span>
         <span class="skill-tag">--secure-digital-infrastructure</span>
         <span class="skill-tag">--embedded-systems</span>
+        <span class="skill-tag">--webgl</span>
         <span class="skill-tag">--restful-apis</span>
         <span class="skill-tag">--agile</span>
         <span class="skill-tag">--waterfall</span>
@@ -860,7 +864,7 @@
     <h2 class="section-title" id="games-heading">games.webgl</h2>
     <div class="section-line" aria-hidden="true"></div>
   </div>
-  <!-- TODO: replace the "View Live" and "GitHub" placeholder URLs once each game is deployed -->
+  <!-- Live links serve the committed builds under play/; rebuild via `npm run build` in each game dir when source changes -->
   <div class="games-grid">
     <article class="project-card reveal reveal-delay-1" aria-label="Slot Machine game project">
       <div class="term-bar" aria-hidden="true">
@@ -882,7 +886,7 @@
           <ul>
             <li>Reel engine with eased spin-up, deceleration, and symbol snapping</li>
             <li>Finite state machine driving idle &rarr; spin &rarr; stop &rarr; win flow</li>
-            <li>Paytable-driven win-line evaluation with animated payouts</li>
+            <li>Centre-payline win evaluation with animated payouts</li>
             <li>GSAP win sequences and synthesised Web Audio sound</li>
           </ul>
         </div>
@@ -895,8 +899,8 @@
           <span class="stack-tag">Vite</span>
         </div>
         <div class="game-actions">
-          <a href="https://dimhull-slot-machine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
-          <a href="https://github.com/dimhull/slot-machine" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+          <a href="./play/slot-machine/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/HyDim/Portfolio/tree/main/slot-machine" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
         </div>
       </div>
     </article>
@@ -918,10 +922,10 @@
         <h3 class="project-name">Asteroids<span class="term-cursor" aria-hidden="true"></span></h3>
         <div class="project-desc">
           <ul>
-            <li>Entity system managing ship, asteroids, bullets, and pickups</li>
+            <li>Entity system managing the ship, asteroids, and bullets</li>
             <li>Circle-based collision detection with asteroid splitting</li>
             <li>Particle system for thrust trails and explosion debris</li>
-            <li>Screen effects &mdash; shake, flash, and hit-stop on impact</li>
+            <li>Screen effects &mdash; shake on big destroys, bullet impact flash</li>
           </ul>
         </div>
         <div class="project-stack">
@@ -931,8 +935,8 @@
           <span class="stack-tag">Vite</span>
         </div>
         <div class="game-actions">
-          <a href="https://dimhull-asteroids.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
-          <a href="https://github.com/dimhull/asteroids" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+          <a href="./play/asteroids/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/HyDim/Portfolio/tree/main/asteroids" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
         </div>
       </div>
     </article>
@@ -956,7 +960,7 @@
           <ul>
             <li>In-house tooling for building frame-by-frame sprite animations</li>
             <li>Spritesheet loader with configurable grid slicing</li>
-            <li>Frame timeline with scrubbing, playback, and per-frame timing</li>
+            <li>Frame timeline with thumbnails, scrubbing, and playback controls</li>
             <li>JSON export of animation data for runtime consumption</li>
           </ul>
         </div>
@@ -967,8 +971,8 @@
           <span class="stack-tag">Vite</span>
         </div>
         <div class="game-actions">
-          <a href="https://dimhull-sprite-editor.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
-          <a href="https://github.com/dimhull/sprite-editor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+          <a href="./play/sprite-editor/" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/HyDim/Portfolio/tree/main/sprite-editor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
         </div>
       </div>
     </article>
