@@ -102,7 +102,7 @@
       transition: height var(--transition);
       border-bottom: 1px solid transparent;
     }
-    .nav-links.open { height: calc(5 * 56px); border-bottom-color: var(--border); }
+    .nav-links.open { height: calc(6 * 56px); border-bottom-color: var(--border); }
     .nav-links li { width: 100%; }
     .nav-links a { display: block; padding: 1rem 2rem; font-size: 0.85rem; }
     .nav-links a::after { display: none; }
@@ -452,6 +452,28 @@
     animation: blink 1.2s step-end infinite;
   }
 
+  /* GAMES / WEBGL */
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 1.8rem; }
+  @media (max-width: 500px) { .games-grid { grid-template-columns: 1fr; } }
+  .game-preview {
+    position: relative; aspect-ratio: 16 / 9; flex-shrink: 0;
+    background: #060b12; border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .game-preview canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .game-preview::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(to bottom,transparent 0px,transparent 3px,rgba(0,0,0,0.14) 3px,rgba(0,0,0,0.14) 4px);
+  }
+  .game-preview-label {
+    position: absolute; bottom: 0.45rem; right: 0.6rem; z-index: 2;
+    font-size: 0.58rem; color: rgba(90,112,132,0.75);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .badge-game { color: var(--green); background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.3); }
+  .game-actions { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+  .game-actions .btn { flex: 1; justify-content: center; padding: 0.5rem 1rem; font-size: 0.7rem; }
+
   /* CONTACT */
   .contact-shell {
     background: var(--bg-card); border: 1px solid var(--border);
@@ -527,6 +549,7 @@
     <li><a href="#education">education</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#games">games</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
@@ -831,9 +854,130 @@
   </div>
 </section>
 
-<section id="contact" aria-labelledby="contact-heading">
+<section id="games" aria-labelledby="games-heading">
   <div class="section-header reveal">
     <span class="section-num">05</span>
+    <h2 class="section-title" id="games-heading">games.webgl</h2>
+    <div class="section-line" aria-hidden="true"></div>
+  </div>
+  <!-- TODO: replace the "View Live" and "GitHub" placeholder URLs once each game is deployed -->
+  <div class="games-grid">
+    <article class="project-card reveal reveal-delay-1" aria-label="Slot Machine game project">
+      <div class="term-bar" aria-hidden="true">
+        <div class="term-dots">
+          <div class="term-dot term-dot-r"></div>
+          <div class="term-dot term-dot-y"></div>
+          <div class="term-dot term-dot-g"></div>
+        </div>
+        <div class="term-title">~/games/slot-machine</div>
+      </div>
+      <div class="game-preview" aria-hidden="true">
+        <canvas data-preview="slot"></canvas>
+        <span class="game-preview-label">preview</span>
+      </div>
+      <div class="project-body">
+        <span class="project-badge badge-game">PixiJS v8 &middot; WebGL</span>
+        <h3 class="project-name">Slot Machine<span class="term-cursor" aria-hidden="true"></span></h3>
+        <div class="project-desc">
+          <ul>
+            <li>Reel engine with eased spin-up, deceleration, and symbol snapping</li>
+            <li>Finite state machine driving idle &rarr; spin &rarr; stop &rarr; win flow</li>
+            <li>Paytable-driven win-line evaluation with animated payouts</li>
+            <li>GSAP win sequences and Howler.js layered audio</li>
+          </ul>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">PixiJS v8</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">WebGL</span>
+          <span class="stack-tag">GSAP</span>
+          <span class="stack-tag">Howler.js</span>
+          <span class="stack-tag">Vite</span>
+        </div>
+        <div class="game-actions">
+          <a href="https://dimhull-slot-machine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/dimhull/slot-machine" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+        </div>
+      </div>
+    </article>
+    <article class="project-card reveal reveal-delay-2" aria-label="Asteroids game project">
+      <div class="term-bar" aria-hidden="true">
+        <div class="term-dots">
+          <div class="term-dot term-dot-r"></div>
+          <div class="term-dot term-dot-y"></div>
+          <div class="term-dot term-dot-g"></div>
+        </div>
+        <div class="term-title">~/games/asteroids</div>
+      </div>
+      <div class="game-preview" aria-hidden="true">
+        <canvas data-preview="asteroids"></canvas>
+        <span class="game-preview-label">preview</span>
+      </div>
+      <div class="project-body">
+        <span class="project-badge badge-game">PixiJS v8 &middot; WebGL</span>
+        <h3 class="project-name">Asteroids<span class="term-cursor" aria-hidden="true"></span></h3>
+        <div class="project-desc">
+          <ul>
+            <li>Entity system managing ship, asteroids, bullets, and pickups</li>
+            <li>Circle-based collision detection with asteroid splitting</li>
+            <li>Particle system for thrust trails and explosion debris</li>
+            <li>Screen effects &mdash; shake, flash, and hit-stop on impact</li>
+          </ul>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">PixiJS v8</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">WebGL</span>
+          <span class="stack-tag">Vite</span>
+        </div>
+        <div class="game-actions">
+          <a href="https://dimhull-asteroids.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/dimhull/asteroids" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+        </div>
+      </div>
+    </article>
+    <article class="project-card reveal reveal-delay-3" aria-label="Sprite Animation Editor project">
+      <div class="term-bar" aria-hidden="true">
+        <div class="term-dots">
+          <div class="term-dot term-dot-r"></div>
+          <div class="term-dot term-dot-y"></div>
+          <div class="term-dot term-dot-g"></div>
+        </div>
+        <div class="term-title">~/games/sprite-editor</div>
+      </div>
+      <div class="game-preview" aria-hidden="true">
+        <canvas data-preview="editor"></canvas>
+        <span class="game-preview-label">preview</span>
+      </div>
+      <div class="project-body">
+        <span class="project-badge badge-game">PixiJS v8 &middot; Tooling</span>
+        <h3 class="project-name">Sprite Animation Editor<span class="term-cursor" aria-hidden="true"></span></h3>
+        <div class="project-desc">
+          <ul>
+            <li>In-house tooling for building frame-by-frame sprite animations</li>
+            <li>Spritesheet loader with configurable grid slicing</li>
+            <li>Frame timeline with scrubbing, playback, and per-frame timing</li>
+            <li>JSON export of animation data for runtime consumption</li>
+          </ul>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">PixiJS v8</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">WebGL</span>
+          <span class="stack-tag">Vite</span>
+        </div>
+        <div class="game-actions">
+          <a href="https://dimhull-sprite-editor.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><span aria-hidden="true">&#9654;</span> View Live</a>
+          <a href="https://github.com/dimhull/sprite-editor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><span aria-hidden="true">&#x2197;</span> GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="section-header reveal">
+    <span class="section-num">06</span>
     <h2 class="section-title" id="contact-heading">contact.sh</h2>
     <div class="section-line" aria-hidden="true"></div>
   </div>
@@ -931,7 +1075,7 @@
   });
 
   function updateActiveNav() {
-    var ids = ['hero','about','education','skills','projects','contact'];
+    var ids = ['hero','about','education','skills','projects','games','contact'];
     var current = '';
     ids.forEach(function(id) {
       var el = document.getElementById(id);
@@ -1040,6 +1184,187 @@
       else { cancelAnimationFrame(rafId); rafId = null; }
     });
   }, { threshold: 0 }).observe(document.getElementById('hero'));
+
+  /* ── GAME PREVIEWS ───────────────────────────────────────────────── */
+  // Placeholder canvas loops for the games.webgl cards — swap for real
+  // gameplay captures (gif/video) when assets are ready.
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var SLOT_SYMBOLS = [
+    { ch: '7',      c: '#00ff88' },
+    { ch: '★', c: '#00d4ff' },
+    { ch: '◆', c: '#ff6b35' },
+    { ch: '♠', c: '#c8d6e5' },
+    { ch: 'Ω', c: '#00ff88' }
+  ];
+
+  function drawSlot(ctx, w, h, t) {
+    ctx.clearRect(0, 0, w, h);
+    var reelW = w / 3, cell = h / 2.5;
+    for (var r = 0; r < 3; r++) {
+      // each reel spins then rests on a staggered cycle
+      var phase = t * 0.0011 + r * 2.1;
+      var spin = Math.max(0, Math.sin(phase));
+      var offset = (t * 0.02 * spin * (1 + r * 0.3)) % cell;
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(r * reelW, 0, reelW, h);
+      ctx.clip();
+      ctx.font = (cell * 0.55) + 'px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      for (var i = -1; i < 4; i++) {
+        var idx = ((i + r * 2 + Math.floor(t * 0.001)) % SLOT_SYMBOLS.length + SLOT_SYMBOLS.length) % SLOT_SYMBOLS.length;
+        var sym = SLOT_SYMBOLS[idx];
+        var y = i * cell + offset + cell / 2;
+        var blur = spin > 0.3 ? 0.35 : 1;
+        ctx.globalAlpha = blur * (1 - Math.abs(y - h / 2) / h);
+        ctx.fillStyle = sym.c;
+        ctx.fillText(sym.ch, r * reelW + reelW / 2, y);
+      }
+      ctx.restore();
+      ctx.globalAlpha = 1;
+      if (r > 0) {
+        ctx.strokeStyle = 'rgba(26,37,53,0.9)';
+        ctx.beginPath(); ctx.moveTo(r * reelW, 0); ctx.lineTo(r * reelW, h); ctx.stroke();
+      }
+    }
+    // payline
+    ctx.strokeStyle = 'rgba(0,255,136,0.25)';
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function makeAsteroidsState(w, h) {
+    var rocks = [];
+    for (var i = 0; i < 5; i++) {
+      rocks.push({
+        x: rand(0, w), y: rand(0, h),
+        r: rand(8, 18),
+        vx: rand(-0.25, 0.25), vy: rand(-0.2, 0.2),
+        rot: rand(0, Math.PI * 2), vr: rand(-0.01, 0.01),
+        sides: 5 + Math.floor(rand(0, 3))
+      });
+    }
+    return { rocks: rocks, trail: [] };
+  }
+
+  function drawAsteroids(ctx, w, h, t, state) {
+    ctx.clearRect(0, 0, w, h);
+    // ship loops a slow figure-of-eight
+    var sx = w / 2 + Math.sin(t * 0.0006) * w * 0.28;
+    var sy = h / 2 + Math.sin(t * 0.0012) * h * 0.22;
+    var heading = Math.atan2(Math.cos(t * 0.0012) * h * 0.22 * 2, Math.cos(t * 0.0006) * w * 0.28);
+    state.trail.push({ x: sx, y: sy, life: 1 });
+    if (state.trail.length > 26) state.trail.shift();
+    state.trail.forEach(function(p) {
+      p.life -= 0.04;
+      if (p.life <= 0) return;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.3 * p.life, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,212,255,' + (p.life * 0.5) + ')';
+      ctx.fill();
+    });
+    state.rocks.forEach(function(a) {
+      a.x = (a.x + a.vx + w) % w;
+      a.y = (a.y + a.vy + h) % h;
+      a.rot += a.vr;
+      ctx.beginPath();
+      for (var i = 0; i <= a.sides; i++) {
+        var ang = a.rot + (i / a.sides) * Math.PI * 2;
+        var rr = a.r * (1 + 0.25 * Math.sin(i * 2.7));
+        var px = a.x + Math.cos(ang) * rr, py = a.y + Math.sin(ang) * rr;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = 'rgba(90,112,132,0.7)';
+      ctx.stroke();
+    });
+    ctx.save();
+    ctx.translate(sx, sy);
+    ctx.rotate(heading);
+    ctx.beginPath();
+    ctx.moveTo(8, 0); ctx.lineTo(-6, 5); ctx.lineTo(-3, 0); ctx.lineTo(-6, -5);
+    ctx.closePath();
+    ctx.strokeStyle = '#00ff88';
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawEditor(ctx, w, h, t) {
+    ctx.clearRect(0, 0, w, h);
+    var FRAMES = 6;
+    var frame = Math.floor(t * 0.004) % FRAMES;
+    // stage: sprite stepping through discrete frames
+    var cx = w / 2, cy = h * 0.4, size = h * 0.18;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate((frame / FRAMES) * Math.PI * 2);
+    var pulse = 1 + 0.2 * Math.sin((frame / FRAMES) * Math.PI * 2);
+    ctx.strokeStyle = '#00d4ff';
+    ctx.strokeRect(-size * pulse / 2, -size * pulse / 2, size * pulse, size * pulse);
+    ctx.restore();
+    // timeline strip
+    var pad = w * 0.08, slotW = (w - pad * 2) / FRAMES, ty = h * 0.72, th = h * 0.16;
+    for (var i = 0; i < FRAMES; i++) {
+      var x = pad + i * slotW;
+      ctx.strokeStyle = 'rgba(26,37,53,1)';
+      ctx.strokeRect(x + 2, ty, slotW - 4, th);
+      if (i === frame) {
+        ctx.fillStyle = 'rgba(0,255,136,0.18)';
+        ctx.fillRect(x + 2, ty, slotW - 4, th);
+        ctx.strokeStyle = '#00ff88';
+        ctx.strokeRect(x + 2, ty, slotW - 4, th);
+      }
+    }
+    // playhead
+    var px2 = pad + (((t * 0.004) % FRAMES) / FRAMES) * (w - pad * 2);
+    ctx.strokeStyle = 'rgba(255,107,53,0.8)';
+    ctx.beginPath(); ctx.moveTo(px2, ty - 4); ctx.lineTo(px2, ty + th + 4); ctx.stroke();
+  }
+
+  document.querySelectorAll('[data-preview]').forEach(function(cv) {
+    var pctx = cv.getContext('2d');
+    var kind = cv.getAttribute('data-preview');
+    var state = null;
+    var running = false, frameId = null;
+
+    function fit() {
+      cv.width = cv.offsetWidth;
+      cv.height = cv.offsetHeight;
+      if (kind === 'asteroids') state = makeAsteroidsState(cv.width, cv.height);
+    }
+
+    function render(t) {
+      if (kind === 'slot') drawSlot(pctx, cv.width, cv.height, t);
+      else if (kind === 'asteroids') drawAsteroids(pctx, cv.width, cv.height, t, state);
+      else drawEditor(pctx, cv.width, cv.height, t);
+    }
+
+    function loop(t) {
+      render(t);
+      if (running) frameId = requestAnimationFrame(loop);
+    }
+
+    fit();
+    if (reduceMotion) {
+      render(1200); // single static frame
+      return;
+    }
+
+    var prevResize;
+    window.addEventListener('resize', function() {
+      clearTimeout(prevResize);
+      prevResize = setTimeout(fit, 150);
+    }, { passive: true });
+
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !running) { running = true; frameId = requestAnimationFrame(loop); }
+        else if (!e.isIntersecting && running) { running = false; cancelAnimationFrame(frameId); }
+      });
+    }, { threshold: 0 }).observe(cv);
+  });
 
   /* ── MODULE MODAL ────────────────────────────────────────────────── */
   // Edit the descriptions below to fill in your real module details.
